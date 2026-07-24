@@ -1,15 +1,15 @@
 import { db } from "../db";
 
 class AuthService {
-  async login() {
-    await db.cloud.login();
+  login() {
+    return db.cloud.login();
   }
 
-  async logout() {
-    await db.cloud.logout();
+  logout() {
+    return db.cloud.logout();
   }
 
-  get currentUser() {
+  get currentUser$() {
     return db.cloud.currentUser;
   }
 }

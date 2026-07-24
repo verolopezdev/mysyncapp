@@ -21,9 +21,11 @@ import { IonIcon } from "@ionic/react";
 
 import { todoRepository } from "../repositories/TodoRepository";
 import { useTodos } from "../hooks/useTodo";
+import { useUser } from "../hooks/useUser";
 
 export default function Home() {
   const todos = useTodos();
+  const session = useUser();
 
   const [title, setTitle] = useState("");
 
@@ -54,6 +56,14 @@ export default function Home() {
       </IonHeader>
 
       <IonContent className="ion-padding">
+
+      <IonItem>
+        <IonLabel>
+          {session.isAuthenticated
+            ? `Logged in as ${session.email}`
+            : "Anonymous user"}
+        </IonLabel>
+      </IonItem>
 
         <IonItem>
           <IonInput

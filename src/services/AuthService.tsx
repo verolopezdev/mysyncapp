@@ -2,7 +2,7 @@ import { db } from "../db";
 
 class AuthService {
   login() {
-    return db.cloud.login();
+    return db.cloud.login();  
   }
 
   logout() {

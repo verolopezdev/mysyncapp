@@ -10,7 +10,7 @@ class TodoRepository {
     const now = new Date();
 
     const todo: Todo = {
-      id: crypto.randomUUID(),
+      id: crypto.randomUUID(),  
       title,
       completed: false,
       createdAt: now,

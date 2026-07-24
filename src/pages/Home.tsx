@@ -22,10 +22,14 @@ import { IonIcon } from "@ionic/react";
 import { todoRepository } from "../repositories/TodoRepository";
 import { useTodos } from "../hooks/useTodo";
 import { useUser } from "../hooks/useUser";
+import { useSync } from "../hooks/useSync";
+import { useCurrentUser } from "../hooks/useCurrentUser";
 
 export default function Home() {
   const todos = useTodos();
   const session = useUser();
+  const sync = useSync();
+  const user = useCurrentUser();
 
   const [title, setTitle] = useState("");
 
@@ -56,14 +60,25 @@ export default function Home() {
       </IonHeader>
 
       <IonContent className="ion-padding">
+          <IonItem>
+            <IonLabel>
+              {user
+                ? `Logged in as ${user.email}`
+                : "Anonymous"}
+            </IonLabel>
+          </IonItem>
 
-      <IonItem>
-        <IonLabel>
-          {session.isAuthenticated
-            ? `Logged in as ${session.email}`
-            : "Anonymous user"}
-        </IonLabel>
-      </IonItem>
+          <IonItem>
+            <IonLabel>
+              Sync phase: {sync.phase}
+            </IonLabel>
+          </IonItem>
+
+          <IonItem>
+            <IonLabel>
+              Connection: {sync.status}
+            </IonLabel>
+          </IonItem>
 
         <IonItem>
           <IonInput

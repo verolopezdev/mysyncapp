@@ -2,9 +2,9 @@ import { IonButton } from "@ionic/react";
 import { authService } from "../services/AuthService";
 
 export function PremiumButton() {
-  async function upgrade() {
+  async function upgrade() {  
     try {
-      await authService.login();
+      await authService.login();  
     } catch (err) {
       console.error(err);
     }
